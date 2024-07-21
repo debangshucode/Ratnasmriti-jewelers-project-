@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main-content %}
+<div class="crumbs">
+    {% for i in sub_category %}
+    <div class="crumbs-left">
+        <ul>
+            <li><a href="{% url "Home" %}">Home | Products | </a> <span>{{i.product_name}}</span></li>
+        </ul>
+    </div>
+    <div class="crumbs-right">
+        <ul>
+            <li><a href="#">Popular Products  </a></li>
+            <li class="hide"><a href="#">| New Arrivals  </a></li>
+        </ul>
+    </div>
+</div>
+<main class="product-page">
+    
+    
+    <div class="product-container">
+        <div class="product-images">
+            <div class="small-images">
+                <img src="{{i.Image.url}}" alt="Product Image 1">
+                <img src="{{i.Image.url}}" alt="Product Image 2">
+            </div>
+            <div class="main-image">
+                <img src="{{i.Image.url}}" alt="Product Image 3"  id="main-product-image">
+            </div>
+            <div class="zoom-result" id="zoom-result"></div>
+        </div>
+
+        <div class="product-details">
+            <h1>{{i.product_name}}</h1>
+            <div class="reviews">
+                <span>★★★★★</span>
+            </div>
+            <p class="descriptions">
+                {{i.Description|safe}}
+            </p>
+            <div class="pricing">
+                <span class="offer-price">Starting ₹{{i.discount_price}}</span>
+                <span class="original-price">₹{{i.price}}</span>
+                <span class="discount">Flat 10% off</span>
+                <p>Note: Prices are subject to change. Please contact us for the current pricing information.</p>
+            </div>
+
+            <div class="actions">
+                <button class="add-to-cart">WhatsApp</button>
+                <button class="buy-now"><a href ="tel:+919123375635">Call Now</a></button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+
+{% endblock main-content %}

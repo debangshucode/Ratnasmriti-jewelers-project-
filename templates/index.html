@@ -1,0 +1,331 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main-content %}
+        <main>
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="{% static "images/store2.jpeg" %}" alt="New Arrivals">
+                        <div class="slide-content">
+                            
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="{% static "images/store2.jpeg" %}" alt="New Arrivals">
+                        <div class="slide-content">
+                            
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="{% static "images/store2.jpeg" %}" alt="New Arrivals">
+                        <div class="slide-content">
+                            
+                        </div>
+                    </div>
+                </div>
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+        </main>
+    
+        <br><br>
+
+        {% comment %} <hr class="hidden-xs-down"> {% endcomment %}
+        
+
+        <div class="main_body">
+           
+           
+            <!-- this is populer products -->
+            <div class="popular_products">
+                <div class="popular_title">
+                    <h2>Popular Products</h2>
+                    <p>This season's most loved, customer favorite designs curated just for you!</p>
+                </div>
+                
+                
+                
+                <hr class="hidden-xs-down">
+                
+                <div class="popular_container" id="popularContainer">
+                    {% for p in popular %}
+                    <a href="{% url "category" p.id %}">
+                        <div class="popular_card slpop" >
+                            <div class="pop_card_image"><img src="{{p.featured_image.url}}" alt=""></div>
+                            <div class="description bold">{{p.Name}} </div>
+                            <div class="pop_card_text">                          
+                                <div class="price"><strong>₹&nbsp;{{p.discouted_price}}&nbsp;</strong><span class="old-price">&nbsp;₹&nbsp;{{p.price}}</span></div>
+                                <div class="call_now"><a href="tel:+919123375635"><i class="fa-solid fa-square-phone"></i></a></div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                    
+                </div>
+                
+            </div><br><br>
+            
+            <!-- this is catagory products -->
+            <div class="popular_products catagory">
+                <div class="popular_title">
+                    <h2>Shop by Catagories</h2>
+                    <p>Browse through your favorite categories. We've got them all! </p>
+                </div>
+                
+                    
+                <hr class="hidden-xs-down">
+                
+                <div class="popular_container" id="popularContainer">
+                    {% for i in category %}
+                        <a href="{% url "product" i.id %}">
+                            <div class="category_card slcard" >
+                                <div class="category_card_image"><img src="{{i.Image.url}}" alt=""></div>
+                                <div class="pop_card_text_cat">
+                                    <div class="description bold">{{i.Name}}</div>
+                                    {% comment %} <div class="price">Starting Form Rs:999</div> {% endcomment %}
+                                    <div class="description"><a href="{% url "product" i.id %}">Explore<i class="fa-solid fa-angle-right"></i></a></div>
+                                    
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}               
+
+
+                </div>
+                {% comment %} <div class="btn-see">
+                    <a href="sub-category.html">See More</a>
+                </div> {% endcomment %}
+                <hr class="hidden-xs-down">
+            </div>
+            
+            <!-- blog section-->
+            <div class="popular_products ">
+                    <div class="popular_title">
+                        <h2>Jewellery Guides</h2>
+                        <p>Check out our ready made guides to make your buying process easier.</p>
+                    </div>
+                    
+                <div class="container">
+                    <div class="blog-section">
+                        <div class="blog-card">
+                            <div class="blog-content">
+                                <h2>Find Your Ring Size</h2>
+                                <a href="{% url "blog" %}" class="explore-btn">Explore Blog <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                            
+                        </div>
+                        <div class="blog-card">
+                            <div class="blog-content">
+                                <h2>The Jewellery Care Guide</h2>
+                                <a href="{% url "blog" %}" class="explore-btn">Explore Blog <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                            
+                        </div>
+                    </div><br>
+                </div>   
+            </div>
+            
+
+            <div class="popular_products ">
+                <div class="popular_title">
+                    <h2>Recommended for you</h2>
+                    <p>Discover products tailored to your preferences and interests.</p>
+                </div>
+                
+                <div class="popular_container" id="popularContainer">
+                    {% for j in recommended %}
+                    <a href="{% url "category" j.id%}">
+                        <div class="popular_card slpop" >
+                            <div class="pop_card_image"><img src="{{j.featured_image.url}}" alt=""></div>
+                            <div class="description bold">{{j.Name}}</div>
+                            <div class="pop_card_text">                          
+                                <div class="price"><strong>₹&nbsp;{{j.discouted_price}}&nbsp;</strong><span class="old-price">&nbsp;₹&nbsp;{{j.price}}</span></div>
+                                <div class="call_now"><a href="tel:+919123375635"><i class="fa-solid fa-square-phone"></i></a></div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}      
+                </div>
+                
+            </div><br><br>
+            
+            <!-- Review Section  -->
+
+            <section id="testimonials">
+                {% comment %} <div class="testimonial-heading">
+                    <span>Reviews</span>
+                    <h2>Clients Says</h2>
+                </div> {% endcomment %}
+                
+                <div class="popular_products ">
+                    <div class="popular_title">
+                        <h2>Reviews</h2>
+                        <p>What our Clients Says</p>
+                    </div><br><br>
+
+                    
+                
+                
+                <div class="testimonial-box-container">
+                    
+                    <div class="testimonial-box">
+                        
+                        <div class="box-top">
+                            <div class="profile">
+                                <div class="profile-img">
+                                    <img src="images/Pearl.jpeg" />
+                                </div>
+                                <div class="name-user">
+                                    <strong>Debangshu Dey</strong>
+                                    <span>@deb</span>
+                                </div>
+                            </div>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="client-comment">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-box">
+                        <div class="box-top">
+                            <div class="profile">
+                                <div class="profile-img">
+                                    <img src="images/braceletes.jpeg" />
+                                </div>
+                                <div class="name-user">
+                                    <strong>Rupak Swar</strong>
+                                    <span>@rup</span>
+                                </div>
+                            </div>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="client-comment">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-box">
+                        <div class="box-top">
+                            <div class="profile">
+                                <div class="profile-img">
+                                    <img src="images/Cat's_eye.jpeg" />
+                                </div>
+                                <div class="name-user">
+                                    <strong>Pritam Dutta</strong>
+                                    <span>@prit</span>
+                                </div>
+                            </div>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="client-comment">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-box">
+                        <div class="box-top">
+                            <div class="profile">
+                                <div class="profile-img">
+                                    <img src="images/jarkan1.jpeg" />
+                                </div>
+                                <div class="name-user">
+                                    <strong>user</strong>
+                                    <span>@user</span>
+                                </div>
+                            </div>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="client-comment">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
+                        </div>
+                    </div>
+                </div>
+              </section>
+              <script src='https://kit.fontawesome.com/c8e4d183c2.js'></script>
+        <br><br>
+        <section class="feature-section">
+            <div class="feature-image">
+                <img src="{% static "images/owner.jpeg" %}" alt="Tanishq Autumn Edit">
+            </div>
+            <div class="feature-content">
+                <h2>Shop Owner</h2>
+                <p class="owner-name">Sanjay Sarkar</p>
+                <p class="owner-description">Sanjay Sarkar is a passionate jewellery designer with over 20 years of experience in creating stunning pieces that blend tradition with modern elegance. Visit our store to experience her exquisite collection.</p>
+                <button class="cta-button">Contact Owner</button>
+            </div>
+            
+        </section>
+        <section class="connect">
+            <h1>Connect With Us</h1>
+            <p>We are always available to guide you at your convenience.</p>
+            <div class="connect-options">
+                <div class="option">
+                    <h2>Connect On<br>WhatsApp</h2>
+                    <a href="#" class="connect-btn">Connect<i class="fa-solid fa-angle-right"></i></a>
+                </div>
+                <div class="option">
+                    <h2> Schedule a <br>Video</h2>
+                    <a href="tel:+919123375635" class="connect-btn">Call <i class="fa-solid fa-angle-right"></i></a>
+                </div>
+                <div class="option">
+                    <h2>Book an<br>Appointment</h2>
+                    <a href="tel:+919123375635" class="connect-btn">Book <i class="fa-solid fa-angle-right"></i></a>
+                </div>
+                
+            </div><br>
+            {% comment %} <hr class="hidden-xs-down"> {% endcomment %}
+        </section>
+              
+
+
+
+
+        
+       
+
+            <!-- this is location -->
+            <div class="location">
+                <div class="popular_title">
+                    <h2>Shop Location</h2>
+                    
+                </div>
+                <p>This is Our Shop Location</p>
+                
+                
+                <div class="location_container">
+                    <div class="map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.0868622328953!2d88.38248347531045!3d22.910166779252748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f8936c18c18c57%3A0x94fadfa5b69102b0!2sRATNASMRITI%20GEMS%20%26%20JEWELLERS!5e0!3m2!1sen!2sin!4v1709714382605!5m2!1sen!2sin"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="address">Sarat Sarani Rd, near Canara Bank, More, Chinsurah, West Bengal 712103</div>
+                </div>
+            </div>
+        </div>
+
+{% endblock main-content %}    
+
+        

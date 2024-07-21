@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block main-content %}
+<div class="crumbs">
+    <div class="crumbs-left">
+        <ul>
+            <li><a href="{% url "Home" %}">Home | </a> <span>Blog</span></li>
+        </ul>
+    </div>
+    <div class="crumbs-right">
+        <ul>
+            <li><a href="#">Popular Products |  </a></li>
+            <li><a href="#">New Arrivals  </a></li>
+        </ul>
+    </div>
+</div>
+    {% for i in blog %}
+    {% if forloop.counter == 1 %}
+    <section class="card-section">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{i.image.url}}" alt="Diamond Earrings">
+            </div>
+            <div class="card-content">
+                <h2>{{i.title}}</h2>
+                <p>{{i.content|safe}} </p>
+                <div class="tags">
+                    <span class="tag">Daily Wear Jewellery</span>
+                    <span class="tag">Earrings</span>
+                    <span class="tag">Latest in Trending</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    {% endfor %}
+<div class="blog-container">
+    {% for i in blog|slice:"1:4" %}
+    <article class="blog-post">
+        <div class="blog-image">
+            <img src="{{i.image.url}}" alt="5 Must-Have Regular Wear Bangles">
+        </div>
+        <div class="blog-content">
+            <div class="tags">
+                <span class="tag">Daily Wear Jewellery</span>
+                <span class="tag">Trending</span>
+            </div>
+            <h3>{{i.title| truncatechars:50}} </h3>
+            <p>{{i.content| truncatechars:70|safe}}</p>
+            <p class="date">{{i.date}}</p>
+        </div>
+    </article>
+    {% endfor %}
+    
+    
+</div>
+{% comment %} <div class="featured-articles">
+    <div class="articles-container">
+        <div class="article">
+            <div class="image-wrapper">
+                <img src="image2.jpg" alt="Editors picks: The season's top diamond jewellery styles">
+                <div class="image-overlay">
+                    <p>Editors picks: The season's top diamond jewellery styles</p>
+                </div>
+            </div>
+            <div class="content">
+                <div class="tags">
+                    <span>Diamond</span>
+                </div>
+                <h3>Editors Picks: The Season’s Top Diamond Jewellery Styles</h3>
+                <p class="date">March 20, 2024</p>
+                <p>In the ever-evolving landscape of fashion, diamond jewellery remains a perennial favourite, adding a touch of timeless...</p>
+            </div>
+        </div>
+        <div class="article">
+            <div class="image-wrapper">
+                <img src="images/pop1.jpg" alt="Diamond Ring Trends You Need to Know for 2023">
+                <div class="image-overlay">
+                    <p>Diamond Ring Trends You Need to Know for 2023</p>
+                </div>
+            </div>
+            <div class="content">
+                <div class="tags">
+                    <span>Diamond</span>
+                    <span>Trending</span>
+                </div>
+                <h3>Diamond Ring Trends You Need to Know for 2023</h3>
+                <p class="date">March 3, 2024</p>
+                <p>Diamonds have always been a symbol of everlasting love and timeless elegance, and in 2024, they are set to shine...</p>
+            </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+{% endblock main-content %}

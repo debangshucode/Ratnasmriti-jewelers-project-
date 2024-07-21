@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+/* * {
+    padding: 0%;
+    margin: 0%;
+    font-family: "Arial", sans-serif;
+    box-sizing: border-box;
+  
+} */
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.crumbs{
+    height: 55px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(221, 208, 206, 0.276);
+    /* padding: 35px; */
+}
+
+.crumbs ul{
+    text-decoration: none;
+    list-style: none;
+}
+.crumbs ul li a {
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+
+}
+.crumbs-left{
+    margin: 35px;
+}
+.crumbs-left ul li span {
+    color: #832729;
+    font-size: 15px;
+    font-weight: 600;
+
+}
+.crumbs-right{
+    display: flex;
+    margin: 35px;
+
+}
+.crumbs-right ul{
+    display: flex;
+    gap: 1.3rem;
+}

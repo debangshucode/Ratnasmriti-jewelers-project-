@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main-content %}
+<div class="crumbs">
+    <div class="crumbs-left">
+        <ul>
+            <li><a href="{% url "Home" %}">Home | Products | </a> <span>{{popular.Name}}</span></li>
+        </ul>
+    </div>
+    <div class="crumbs-right">
+        <ul>
+            <li><a href="#">Popular Products   </a></li>
+            <li class="hide"><a href="#">| New Arrivals  </a></li>
+        </ul>
+    </div>
+</div>
+<main class="product-page">
+    
+    {% comment %} {% for i in popular %} {% endcomment %}
+    <div class="product-container">
+        <div class="product-images">
+            <div class="small-images">
+                <img src="{{popular.featured_image.url}}" alt="Product Image 1">
+                <img src="{{popular.featured_image.url}}" alt="Product Image 2">
+            </div>
+            <div class="main-image">
+                <img src="{{popular.featured_image.url}}" alt="Product Image 3"  id="main-product-image">
+            </div>
+            <div class="zoom-result" id="zoom-result"></div>
+        </div>
+
+        <div class="product-details">
+            <h1>{{popular.Name}}</h1>
+            <div class="reviews">
+                <span>★★★★★</span>
+            </div>
+            <p class="descriptions">
+                {{popular.content|safe}}
+            </p>
+            <div class="pricing">
+                <span class="offer-price">₹{{popular.discouted_price}}</span>
+                <span class="original-price">{{popular.price}}</span>
+                <span class="discount">Flat 10% off</span>
+            </div>
+
+            <div class="actions">
+                <button class="add-to-cart">WhatsApp</button>
+                <button class="buy-now"><a href ="tel:+919123375635">Call Now</a></button>
+            </div>
+        </div>
+    </div>
+    {% comment %} {% endfor %} {% endcomment %}
+</main>
+
+
+
+{% endblock main-content %}

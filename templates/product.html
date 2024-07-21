@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main-content %}
+<div class="crumbs">
+    <div class="crumbs-left">
+        <ul>
+            <li><a href="{% url "Home" %}">Home | Products | </a><span>{{main_category.Name}}</span></li>
+        </ul>
+    </div>
+    <div class="crumbs-right">
+        <ul>
+            <li><a href="#">Popular Products   </a></li>
+            <li class="hide"><a href="#">| New Arrivals  </a></li>
+        </ul>
+    </div>
+</div>
+<div class="main_body">
+           
+           
+    <!-- this is populer products -->
+    <div class="popular_products">
+        
+        
+        <hr class="hidden-xs-down">
+        
+        <div class="popular_container" id="popularContainer">
+            {% for i in sub_categories %}
+            <a href="{% url "description"  i.id %}">
+                <div class="popular_card slpop" >
+                    <div class="pop_card_image"><img src="{{i.Image.url}}" alt=""></div>
+                    <div class="description bold">{{i.product_name}} </div>
+                    <div class="pop_card_text">                          
+                        <div class="price"><strong>₹&nbsp;{{i.discount_price}}&nbsp;</strong><span class="old-price">&nbsp;₹&nbsp;{{i.price}}</span></div>
+                        <div class="call_now"><a href="tel:+919123375635"><i class="fa-solid fa-square-phone"></i></a></div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+            
+        </div>
+        
+    </div>
+    <div class="popular_products ">
+        <div class="popular_title">
+            <h2>Recommended for you</h2>
+            <p>Discover products tailored to your preferences and interests.</p>
+        </div>
+        
+        <div class="popular_container" id="popularContainer">
+            {% for j in recommended %}
+            <a href="{% url "category" j.id%}">
+                <div class="popular_card slpop" >
+                    <div class="pop_card_image"><img src="{{j.featured_image.url}}" alt=""></div>
+                    <div class="description bold">{{j.Name}}</div>
+                    <div class="pop_card_text">                          
+                        <div class="price"><strong>₹&nbsp;{{j.discouted_price}}&nbsp;</strong><span class="old-price">&nbsp;₹&nbsp;{{j.price}}</span></div>
+                        <div class="call_now"><a href="tel:+919123375635"><i class="fa-solid fa-square-phone"></i></a></div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}      
+        </div>
+    </div>
+        
+
+{% endblock main-content %}
